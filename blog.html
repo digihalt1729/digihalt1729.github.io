@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./css/style.css">
+    <link rel="stylesheet" href="./css/nav.css">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Mukta:wght@200;300;400;500;600;700;800&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+        rel="stylesheet">
+    <script type="module" src="https://cdn.jsdelivr.net/npm/ionicons@latest/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://cdn.jsdelivr.net/npm/ionicons@latest/dist/ionicons/ionicons.js"></script>
+    
+</head>
+
+<body>
+    <nav class="wrapper nav">
+        <div>
+            <div class="left">
+                <img src="./images/bl.png" alt="logo">
+            </div>
+            <div class="center">
+                <a href="./index.html">Home</a>
+                <span class="dropdownCon">Services
+                    <ul class="dropdown">
+                           <li><a href="./service.html">GoogleAds</a></li>
+                        <li><a href="./service.html">Social Media Marketing</a></li>
+                        <li><a href="./service.html">Lead Generation</a></li>
+                        <li><a href="./service.html">Graphic Design</a></li>
+                        <li><a href="./service.html">SEO</a></li>
+                        <li><a href="./service.html">Web Design & Development</a></li>
+                    </ul>
+                </span>
+                <a href="./blogs.html">Blogs</a>
+                <a href="./about.html">About Us</a>
+                <a href="./contact.html">Contact Us</a>
+            </div>
+            <div class="rightCover">
+                <a href="./contact.html" class="right">
+                    Let's Talk
+                </a>
+                <div class="sideBar" onclick="toggleSidBar()">
+                    <ion-icon name="menu" style="font-size: 2.5rem;"></ion-icon>
+                </div>
+                <script>
+                    const toggleSidBar = () => {
+                        const sidebar = document.querySelectorAll('.center');
+                        const style = window.getComputedStyle(sidebar[0])
+                        const top = new WebKitCSSMatrix(style.transform).m41;
+                        if (top > 0) {
+                            sidebar[0].style.transform = "translateX(0%)"
+                        }
+                        else {
+
+                            sidebar[0].style.transform = "translateX(100%)"
+                        }
+                    }
+                    const items = document.querySelectorAll('.accordion button');
+
+                    function toggleAccordion() {
+                        const itemToggle = this.getAttribute('aria-expanded');
+
+                        for (i = 0; i < items.length; i++) {
+                            items[i].setAttribute('aria-expanded', 'false');
+                        }
+
+                        if (itemToggle == 'false') {
+                            this.setAttribute('aria-expanded', 'true');
+                        }
+                    }
+
+                    items.forEach((item) => item.addEventListener('click', toggleAccordion));
+                </script>
+            </div>
+
+        </div>
+    </nav>
+    <script>
+        function getSlugFromUrl() {
+            const params = new URLSearchParams(window.location.search);
+            return params.get('slug');
+        }
+        async function fetchBlogData(slug) {
+            const url = `http://65.1.93.85/api/v1/blog/${slug}`;
+            try {
+                const response = await fetch(url);
+                const data = await response.json();
+                console.log(data)
+                return data.customer;
+            } catch (error) {
+                console.error('Error fetching blog data:', error);
+            }
+        }
+
+        function populateBlogPage(data) {
+            const bannerImage = document.querySelector('.banner');
+            bannerImage.src = data.banner;
+            const blogTitle = document.querySelector('.title');
+            blogTitle.textContent = data.pageHeading;
+            const blogContent = document.querySelector('.blog-content');
+            blogContent.innerHTML = data.blog;
+            document.title = data.seoTitle;
+            const metaDescription = document.createElement('meta');
+            metaDescription.name = 'description';
+            metaDescription.content = data.seoDescription;
+            document.head.appendChild(metaDescription);
+            const metaKeywords = document.createElement('meta');
+            metaKeywords.name = 'keywords';
+            metaKeywords.content = data.seoKeywords;
+            document.head.appendChild(metaKeywords);
+        }
+
+        async function loadBlog() {
+            const slug = getSlugFromUrl();
+            if (slug) {
+                const blogData = await fetchBlogData(slug);
+                if (blogData) {
+                    populateBlogPage(blogData);
+                }
+            }
+        }
+        window.onload = loadBlog
+    </script>
+
+    <div
+        style="max-width: 1200px; width: 95%;margin:20px auto ;margin-bottom: 0px; display: flex; flex-direction: column;">
+        <div style="display: flex;gap: 8px;font-size: 1rem; align-items: center;"><span><a
+                    style="color: black; font-size: 1rem; text-decoration: none;"
+                    href="index.html">Home</a></span>><span><a
+                    style="color: black; font-size: 1rem; text-decoration: none;" href="blogs.html">Blogs</a></span>>
+        </div>
+    </div>
+    <div
+        style="max-width: 1200px; width: 95%;border-radius: 10px; border: 1px solid red;margin:20px auto ;aspect-ratio: 16/6;overflow: hidden;">
+
+        <img class="banner" src="" style="width: 100%;" alt="">
+    </div>
+
+    <div class="title"
+        style="max-width: 1200px; width: 95%;margin:10px auto ; display: flex; flex-direction: column;font-size:50px;font-weight: 600;  text-transform: capitalize;">
+
+    </div>
+    <div class="blog-content"
+        style="max-width: 1200px; width: 95%;margin:10px auto ;background-color: #fff4f1; padding: 20px;border-radius: 10px;">
+
+    </div>
+   
+    <footer class="wrapper" style="margin-top: 50px;">
+        <div
+            style="max-width: 1300px; position: relative; align-items: center; width: 95%; gap: 10px;padding: 50px 0px; display: flex;justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 20px;">
+            <div>
+                <div class="left" style="width: 100px ;aspect-ratio: 1;margin-bottom: 20px;">
+                    <img src="./images/logoLight.png" style="height: 100%;width: 100%;" alt="">
+                </div>
+                <h5 style="font-weight: 700; color: #ed6744; font-size: 1.5rem;">FOLLOW US</h5>
+                <div style="display: flex; gap: 20px;">
+                    <a href="https://www.facebook.com/digihalt" style="color: white;">
+                        <ion-icon style="font-size: 1.8rem; margin-top: 20px;" name="logo-facebook"></ion-icon>
+
+                    </a>
+                    <a href="https://www.youtube.com/@digihalt" style="color: white;">
+                        <ion-icon style="font-size: 1.8rem; margin-top: 20px;" name="logo-youtube"></ion-icon>
+                    </a>
+                    <a href="https://x.com/digi_halt" style="color: white;">
+                        <ion-icon style="font-size: 1.8rem; margin-top: 20px;" name="logo-twitter"></ion-icon>
+                    </a>
+                    <a href="https://www.linkedin.com/in/digi-halt-8b2120240" style="color: white;">
+                        <ion-icon style="font-size: 1.8rem; margin-top: 20px;" name="logo-linkedin"></ion-icon>
+
+                    </a><a href=" https://www.instagram.com/digi_halt/" style="color: white;">
+                        <ion-icon style="font-size: 1.8rem; margin-top: 20px;" name="logo-instagram"></ion-icon>
+
+                    </a>
+                </div>
+            </div>
+            <div class="a" style="display: flex;flex-direction: column;gap: 10px;color: white !important;">
+                <a href="blogs.html">Blogs</a>
+                <a href="index.html#Services">Services</a>
+                <a href="about.html">About Us</a>
+                <a href="contact.html">Contact Us</a>
+                <a href="privacy-policy.html">Privacy Policy</a>
+                <a href="terms&condition.html">Terms & Conditions</a>
+            </div>
+            <div class="a" style="display: flex;flex-direction: column;gap: 10px;color: white !important;">
+                <div class="left" style="margin-bottom: 10px; color: #ed6744; font-weight: 700;
+            font-size: 1.5rem;">Need support ?</div>
+                <a class="ad" href=""><ion-icon name="mail-outline"></ion-icon>info@digihalt.com</a>
+                <a class="ad" href=""><ion-icon name="call-outline"></ion-icon>+91-8755220228</a>
+            </div>
+            <div style="position: absolute; bottom: 30px; ">
+                ©2024 – Digihalt. All rights reserved.
+
+            </div>
+        </div>
+    </footer>
+</body>
+
+</html>

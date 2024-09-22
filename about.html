@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./css/style.css">
+    <link rel="stylesheet" href="./css/nav.css">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Mukta:wght@200;300;400;500;600;700;800&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+        rel="stylesheet">
+    <script type="module" src="https://cdn.jsdelivr.net/npm/ionicons@latest/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://cdn.jsdelivr.net/npm/ionicons@latest/dist/ionicons/ionicons.js"></script>
+</head>
+
+<body>
+    <nav class="wrapper nav">
+        <div>
+            <div class="left">
+                <img src="./images/bl.png" alt="logo">
+            </div>
+            <div class="center">
+                <a href="./index.html">Home</a>
+                <span class="dropdownCon">Services
+                    <ul class="dropdown">
+                           <li><a href="./service.html">GoogleAds</a></li>
+                        <li><a href="./service.html">Social Media Marketing</a></li>
+                        <li><a href="./service.html">Lead Generation</a></li>
+                        <li><a href="./service.html">Graphic Design</a></li>
+                        <li><a href="./service.html">SEO</a></li>
+                        <li><a href="./service.html">Web Design & Development</a></li>
+                    </ul>
+                </span>
+                <a href="./blogs.html">Blogs</a>
+                <a href="./about.html">About Us</a>
+                <a href="./contact.html">Contact Us</a>
+            </div>
+            <div class="rightCover">
+                <a href="./contact.html" class="right">
+                    Let's Talk
+                </a>
+                <div class="sideBar" onclick="toggleSidBar()">
+                    <ion-icon name="menu" style="font-size: 2.5rem;"></ion-icon>
+                </div>
+                <script>
+                    const toggleSidBar = () => {
+                        const sidebar = document.querySelectorAll('.center');
+                        const style = window.getComputedStyle(sidebar[0])
+                        const top = new WebKitCSSMatrix(style.transform).m41;
+                        if (top > 0) {
+                            sidebar[0].style.transform = "translateX(0%)"
+                        }
+                        else {
+
+                            sidebar[0].style.transform = "translateX(100%)"
+                        }
+                    }
+                    const items = document.querySelectorAll('.accordion button');
+
+                    function toggleAccordion() {
+                        const itemToggle = this.getAttribute('aria-expanded');
+
+                        for (i = 0; i < items.length; i++) {
+                            items[i].setAttribute('aria-expanded', 'false');
+                        }
+
+                        if (itemToggle == 'false') {
+                            this.setAttribute('aria-expanded', 'true');
+                        }
+                    }
+
+                    items.forEach((item) => item.addEventListener('click', toggleAccordion));
+                </script>
+            </div>
+
+        </div>
+    </nav>
+    <div style="width: 100vw; height: 50vh;position: relative;overflow: hidden;z-index: -1;">
+        <img style="width: 100%;object-fit: cover; position: absolute; "
+            src="https://lirp.cdn-website.com/d4e75e89/dms3rep/multi/opt/photo-1512295767273-ac109ac3acfa-d44c377e-2880w.jpg"
+            alt="">
+        <div
+            style="height: 100vh;max-width: none; width: 100vw; position: absolute; top: 0; left: 0; background: rgba(0, 0, 0, 0.4); ">
+        </div>
+        <div
+            style="width: 100%; height: 100%; display: flex; flex-direction: column; justify-content: center;align-items: center;">
+
+            <p style="font-size: 5rem;position: relative; z-index: 10; color: white; font-weight: 700; ">
+                About Us
+        </div>
+    </div>
+    <div
+        style="max-width: 1400px; width: 95%;margin: auto; position: relative;overflow: hidden; display: flex;margin-top: 100px;gap: 40px;">
+        <div style="flex: 1; min-width: 450px;">
+            <h2>Consider us your very own digital marketing department</h2>
+            <h4 style="font-size: 1.8rem;margin-top: 20px;">Your growth is our top priority.</h4>
+            <p style="margin-top: 30px; font-size: 1.5rem;">We become an extension of the brands we work with by
+                delivering a tailored, high impact social-first digital marketing solution. No canned packages here.
+            </p>
+            <p style="margin-top: 50px; font-size: 1.5rem;">We live, eat and breathe social media. Happy Gilmore would
+                say it’s our “happy place.” We take pride in staying ahead of digital trends, thinking outside of the
+                box and elevating D2C and B2B brands from mediocre to exceptional. </p>
+            <h3 style="font-size: 2rem;margin-top: 30px">Trusted By: Nike, Airbnb, OrangeTheory Fitness, Bose,
+                BraveRobot and more...</h3>
+        </div>
+        <div style="flex: 1; min-width: 450px;">
+            <img style="width: 100%; height: auto;"
+                src="https://lirp.cdn-website.com/d4e75e89/dms3rep/multi/opt/pexels-photo-4240503-55619c2b-1734h.jpeg"
+                alt="">
+        </div>
+    </div>
+    <h2 style="text-align: center; padding: 50px;">Meet Our Team</h2>
+    <div
+        style="display: flex; flex-wrap: wrap; gap: 30px; align-items: center; justify-content: center; margin-bottom: 50px;">
+        <div
+            style="display: flex; align-items: center; flex-direction: column; max-width: 380px; min-width: 300px; gap: 10px; gap: 10px;">
+            <div
+                style="border-radius: 7px; border: 1px solid red; width: 100%; aspect-ratio: 9/12;display: flex;align-items: center;justify-content: center;">
+
+            </div>
+            <h4 style="font-size: 1.4rem; ">Mike Jones</h4>
+            <p style="text-align: center; ">Founder</p>
+
+        </div>
+        <div
+            style="display: flex; align-items: center; flex-direction: column; max-width: 380px; min-width: 300px; gap: 10px; gap: 10px;">
+            <div
+                style="border-radius: 7px; border: 1px solid red; width: 100%; aspect-ratio: 9/12;display: flex;align-items: center;justify-content: center;">
+
+            </div>
+            <h4 style="font-size: 1.4rem; ">Mike Jones</h4>
+            <p style="text-align: center; ">Founder</p>
+
+        </div>
+        <div
+            style="display: flex; align-items: center; flex-direction: column; max-width: 380px; min-width: 300px; gap: 10px; gap: 10px;">
+            <div
+                style="border-radius: 7px; border: 1px solid red; width: 100%; aspect-ratio: 9/12;display: flex;align-items: center;justify-content: center;">
+
+            </div>
+            <h4 style="font-size: 1.4rem; ">Mike Jones</h4>
+            <p style="text-align: center; ">Founder</p>
+
+        </div>
+
+    </div>
+
+
+
+
+
+    <footer class="wrapper">
+        <div
+            style="max-width: 1300px; position: relative; align-items: center; width: 95%; gap: 10px;padding: 50px 0px; display: flex;justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 20px;">
+            <div>
+                <div class="left" style="width: 100px ;aspect-ratio: 1;margin-bottom: 20px;">
+                    <img src="./images/logoLight.png" style="height: 100%;width: 100%;" alt="">
+                </div>
+                <h5 style="font-weight: 700; color: #ed6744; font-size: 1.5rem;">FOLLOW US</h5>
+                <div style="display: flex; gap: 20px;">
+                    <a href="https://www.facebook.com/digihalt" style="color: white;">
+                        <ion-icon style="font-size: 1.8rem; margin-top: 20px;" name="logo-facebook"></ion-icon>
+
+                    </a>
+                    <a href="https://www.youtube.com/@digihalt" style="color: white;">
+                        <ion-icon style="font-size: 1.8rem; margin-top: 20px;" name="logo-youtube"></ion-icon>
+                    </a>
+                    <a href="https://x.com/digi_halt" style="color: white;">
+                        <ion-icon style="font-size: 1.8rem; margin-top: 20px;" name="logo-twitter"></ion-icon>
+                    </a>
+                    <a href="https://www.linkedin.com/in/digi-halt-8b2120240" style="color: white;">
+                        <ion-icon style="font-size: 1.8rem; margin-top: 20px;" name="logo-linkedin"></ion-icon>
+
+                    </a><a href=" https://www.instagram.com/digi_halt/" style="color: white;">
+                        <ion-icon style="font-size: 1.8rem; margin-top: 20px;" name="logo-instagram"></ion-icon>
+
+                    </a>
+                </div>
+            </div>
+            <div class="a" style="display: flex;flex-direction: column;gap: 10px;color: white !important;">
+                <a href="blogs.html">Blogs</a>
+                <a href="index.html#Services">Services</a>
+                <a href="about.html">About Us</a>
+                <a href="contact.html">Contact Us</a>
+                <a href="privacy-policy.html">Privacy Policy</a>
+                <a href="terms&condition.html">Terms & Conditions</a>
+            </div>
+            <div class="a" style="display: flex;flex-direction: column;gap: 10px;color: white !important;">
+                <div class="left" style="margin-bottom: 10px; color: #ed6744; font-weight: 700;
+            font-size: 1.5rem;">Need support ?</div>
+                <a class="ad" href=""><ion-icon name="mail-outline"></ion-icon>info@digihalt.com</a>
+                <a class="ad" href=""><ion-icon name="call-outline"></ion-icon>+91-8755220228</a>
+            </div>
+            <div style="position: absolute; bottom: 30px; ">
+                ©2024 – Digihalt. All rights reserved.
+
+            </div>
+        </div>
+    </footer>
+</body>
+
+</html>

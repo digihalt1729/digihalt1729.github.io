@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Terms and Conditions</title>
+    <link rel="stylesheet" href="./css/style.css">
+    <link rel="stylesheet" href="./css/nav.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Mukta:wght@200;300;400;500;600;700;800&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+        rel="stylesheet">
+    <script type="module" src="https://cdn.jsdelivr.net/npm/ionicons@latest/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://cdn.jsdelivr.net/npm/ionicons@latest/dist/ionicons/ionicons.js"></script>
+    <style>
+        .container {
+            max-width: 1200px;
+            width: 95%;
+            margin: 0 auto;
+            padding: 100px 0px !important;
+        }
+
+
+        h1 {
+            text-align: center;
+            margin-bottom: 20px;
+            font-size: 2.5rem;
+        }
+
+        h2 {
+            color: #444;
+            margin: 20px 0px;
+            font-size: 2rem;
+
+        }
+
+        h3 {
+            color: #666;
+            margin-top: 10px;
+            font-size: 1.2rem;
+        }
+
+        p {
+            line-height: 1.6;
+
+        }
+
+        a {
+            color: #ed6744;
+            font-weight: 600;
+            text-decoration: none;
+        }
+    </style>
+
+
+</head>
+
+<body>
+    <nav class="wrapper nav">
+        <div>
+            <div class="left">
+                <img src="./images/bl.png" alt="logo">
+            </div>
+            <div class="center">
+                <a href="./index.html">Home</a>
+                <span class="dropdownCon">Services
+                    <ul class="dropdown">
+                           <li><a href="./service.html">GoogleAds</a></li>
+                        <li><a href="./service.html">Social Media Marketing</a></li>
+                        <li><a href="./service.html">Lead Generation</a></li>
+                        <li><a href="./service.html">Graphic Design</a></li>
+                        <li><a href="./service.html">SEO</a></li>
+                        <li><a href="./service.html">Web Design & Development</a></li>
+                    </ul>
+                </span>
+                <a href="./blogs.html">Blogs</a>
+                <a href="./about.html">About Us</a>
+                <a href="./contact.html">Contact Us</a>
+            </div>
+            <div class="rightCover">
+                <a href="./contact.html" class="right">
+                    Let's Talk
+                </a>
+                <div class="sideBar" onclick="toggleSidBar()">
+                    <ion-icon name="menu" style="font-size: 2.5rem;"></ion-icon>
+                </div>
+                <script>
+                    const toggleSidBar = () => {
+                        const sidebar = document.querySelectorAll('.center');
+                        const style = window.getComputedStyle(sidebar[0])
+                        const top = new WebKitCSSMatrix(style.transform).m41;
+                        if (top > 0) {
+                            sidebar[0].style.transform = "translateX(0%)"
+                        }
+                        else {
+
+                            sidebar[0].style.transform = "translateX(100%)"
+                        }
+                    }
+                    const items = document.querySelectorAll('.accordion button');
+
+                    function toggleAccordion() {
+                        const itemToggle = this.getAttribute('aria-expanded');
+
+                        for (i = 0; i < items.length; i++) {
+                            items[i].setAttribute('aria-expanded', 'false');
+                        }
+
+                        if (itemToggle == 'false') {
+                            this.setAttribute('aria-expanded', 'true');
+                        }
+                    }
+
+                    items.forEach((item) => item.addEventListener('click', toggleAccordion));
+                </script>
+            </div>
+
+        </div>
+    </nav>
+    <div class="container">
+        <h1>Privacy Policy</h1>
+        <section>
+            <h2>1. Introduction</h2>
+            <p>Digi Halt is committed to protecting your privacy. This Privacy Policy explains how we collect, use, and
+                safeguard your information when you visit our website and use our services.</p>
+        </section>
+        <section>
+            <h2>2. Information We Collect</h2>
+            <h3>Personal Information</h3>
+            <p>We may collect personal information such as your name, email address, phone number, and payment
+                information when you register for our services or contact us.</p>
+            <h3>Usage Data</h3>
+            <p>We may collect information about how you access and use our website, including your IP address, browser
+                type, and pages visited.</p>
+        </section>
+        <section>
+            <h2>3. How We Use Your Information</h2>
+            <h3>Service Delivery</h3>
+            <p>To provide and maintain our services.</p>
+            <h3>Communication</h3>
+            <p>To contact you with updates, promotional materials, and other information that may be of interest to you.
+            </p>
+            <h3>Improvement</h3>
+            <p>To understand and analyze how you use our services and to improve our website and services.</p>
+        </section>
+        <section>
+            <h2>4. Sharing Your Information</h2>
+            <p>We do not sell, trade, or otherwise transfer your personal information to outside parties without your
+                consent, except as required by law or to protect our rights.</p>
+        </section>
+        <section>
+            <h2>5. Data Security</h2>
+            <p>We implement a variety of security measures to maintain the safety of your personal information. However,
+                no method of transmission over the internet or electronic storage is 100% secure, and we cannot
+                guarantee absolute security.</p>
+        </section>
+        <section>
+            <h2>6. Cookies</h2>
+            <p>Our website may use cookies to enhance your experience. You can choose to disable cookies through your
+                browser settings, but this may affect your ability to use certain features of our website.</p>
+        </section>
+        <section>
+            <h2>7. Third-Party Links</h2>
+            <p>Our website may contain links to third-party sites. We are not responsible for the privacy practices or
+                content of these external sites.</p>
+        </section>
+        <section>
+            <h2>8. Changes to This Privacy Policy</h2>
+            <p>Digi Halt reserves the right to update this Privacy Policy at any time. Any changes will be posted on
+                this page, and your continued use of the services signifies your acceptance of the new policy.</p>
+        </section>
+        <section>
+            <h2>9. Contact Us</h2>
+            <p>If you have any questions about this Privacy Policy, please contact us at <a
+                    href="mailto:info@digihalt.com" style="color: #ed6744;">info@digihalt.com</a>.</p>
+        </section>
+    </div>
+    <footer class="wrapper" style="margin-top: 50px;">
+        <div
+            style="max-width: 1300px; position: relative; align-items: center; width: 95%; gap: 10px;padding: 50px 0px; display: flex;justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 20px;">
+            <div>
+                <div class="left" style="width: 100px ;aspect-ratio: 1;margin-bottom: 20px;">
+                    <img src="./images/logoLight.png" style="height: 100%;width: 100%;" alt="">
+                </div>
+                <h5 style="font-weight: 700; color: #ed6744; font-size: 1.5rem;">FOLLOW US</h5>
+                <div style="display: flex; gap: 20px;">
+                    <a href="https://www.facebook.com/digihalt" style="color: white;">
+                        <ion-icon style="font-size: 1.8rem; margin-top: 20px;" name="logo-facebook"></ion-icon>
+
+                    </a>
+                    <a href="https://www.youtube.com/@digihalt" style="color: white;">
+                        <ion-icon style="font-size: 1.8rem; margin-top: 20px;" name="logo-youtube"></ion-icon>
+                    </a>
+                    <a href="https://x.com/digi_halt" style="color: white;">
+                        <ion-icon style="font-size: 1.8rem; margin-top: 20px;" name="logo-twitter"></ion-icon>
+                    </a>
+                    <a href="https://www.linkedin.com/in/digi-halt-8b2120240" style="color: white;">
+                        <ion-icon style="font-size: 1.8rem; margin-top: 20px;" name="logo-linkedin"></ion-icon>
+
+                    </a><a href=" https://www.instagram.com/digi_halt/" style="color: white;">
+                        <ion-icon style="font-size: 1.8rem; margin-top: 20px;" name="logo-instagram"></ion-icon>
+
+                    </a>
+                </div>
+            </div>
+            <div class="a" style="display: flex;flex-direction: column;gap: 10px;color: white !important;">
+                <a href="blogs.html">Blogs</a>
+                <a href="index.html#Services">Services</a>
+                <a href="about.html">About Us</a>
+                <a href="contact.html">Contact Us</a>
+                <a href="privacy-policy.html">Privacy Policy</a>
+                <a href="terms&condition.html">Terms & Conditions</a>
+            </div>
+            <div class="a" style="display: flex;flex-direction: column;gap: 10px;color: white !important;">
+                <div class="left" style="margin-bottom: 10px; color: #ed6744; font-weight: 700;
+            font-size: 1.5rem;">Need support ?</div>
+                <a class="ad" href=""><ion-icon name="mail-outline"></ion-icon>info@digihalt.com</a>
+                <a class="ad" href=""><ion-icon name="call-outline"></ion-icon>+91-8755220228</a>
+            </div>
+            <div style="position: absolute; bottom: 30px; ">
+                ©2024 – Digihalt. All rights reserved.
+
+            </div>
+        </div>
+    </footer>
+</body>
+
+</html>

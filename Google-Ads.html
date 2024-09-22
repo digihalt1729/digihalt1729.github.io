@@ -1,3 +1,6 @@
+<?php
+ include("include.php") 
+ ?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -6,119 +9,333 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel="stylesheet" href="./css/style.css">
-    <link rel="stylesheet" href="./css/faq.css">
-    <link rel="stylesheet" href="./css/nav.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
         href="https://fonts.googleapis.com/css2?family=Mukta:wght@200;300;400;500;600;700;800&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
         rel="stylesheet">
+    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
     <script type="module" src="https://cdn.jsdelivr.net/npm/ionicons@latest/dist/ionicons/ionicons.esm.js"></script>
     <script nomodule src="https://cdn.jsdelivr.net/npm/ionicons@latest/dist/ionicons/ionicons.js"></script>
-
-
-    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+
     <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    <style>
+        html {
+            scroll-behavior: smooth;
+        }
+
+        .container {
+            margin: 0 auto;
+            padding: 4rem;
+            width: 48rem;
+        }
+
+        .accordion .accordion-item {
+            border-bottom: 1px solid #e5e5e5;
+        }
+
+        .accordion .accordion-item button[aria-expanded='true'] {
+            border-bottom: 1px solid #ed6744;
+        }
+
+        .accordion button {
+            position: relative;
+            display: block;
+            text-align: left;
+            width: 100%;
+            padding: 1em 0;
+            color: #20272e;
+            font-size: 1.15rem;
+            font-weight: 400;
+            border: none;
+            background: none;
+            outline: none;
+        }
+
+        .accordion button:hover,
+        .accordion button:focus {
+            cursor: pointer;
+            color: #ed6744;
+        }
+
+        .accordion button:hover::after,
+        .accordion button:focus::after {
+            cursor: pointer;
+            color: #ed6744;
+            border: 1px solid #03b5d2;
+        }
+
+        .accordion button .accordion-title {
+            padding: 1em 1.5em 1em 0;
+            font-size: 1.3rem;
+        }
+
+        .accordion button .icon {
+            display: inline-block;
+            position: absolute;
+            top: 18px;
+            right: 0;
+            width: 22px;
+            height: 22px;
+            border: 1px solid;
+            border-radius: 22px;
+        }
+
+        .accordion button .icon::before {
+            display: block;
+            position: absolute;
+            content: '';
+            top: 9px;
+            left: 5px;
+            width: 10px;
+            height: 2px;
+            background: currentColor;
+        }
+
+        .accordion button .icon::after {
+            display: block;
+            position: absolute;
+            content: '';
+            top: 5px;
+            left: 9px;
+            width: 2px;
+            height: 10px;
+            background: currentColor;
+        }
+
+        .accordion button[aria-expanded='true'] {
+            color: #ed6744;
+        }
+
+        .accordion button[aria-expanded='true'] .icon::after {
+            width: 0;
+        }
+
+        .accordion button[aria-expanded='true']+.accordion-content {
+            opacity: 1;
+            max-height: 9em;
+            transition: all 200ms linear;
+            will-change: opacity, max-height;
+        }
+
+        .accordion .accordion-content {
+            opacity: 0;
+            max-height: 0;
+            overflow: hidden;
+            transition: opacity 200ms linear, max-height 200ms linear;
+            will-change: opacity, max-height;
+        }
+
+        .accordion .accordion-content p {
+            font-size: 1rem;
+            font-weight: 300;
+            margin: 2em 0;
+        }
+
+        .a>a {
+            font-size: 1.3rem;
+        }
+
+        .a>a:hover {
+            color: #ed6744;
+        }
+    </style>
 </head>
 
 <body>
-    <nav class="wrapper nav">
+    <nav class="wrapper nav" style="height: auto; padding: 10px 0px;">
         <div>
-            <div class="left">
-                <img src="./images/bl.png" alt="logo">
+            <div class="left" style="width: 90px ;aspect-ratio: 1;">
+                <img src="./images/bl.png" style="height: 100%;width: 100%;object-fit: cover; " alt="">
             </div>
             <div class="center">
-                <a href="./index.html">Home</a>
-                <span class="dropdownCon">Services
-                    <ul class="dropdown">
-                        <li><a href="./service.html">GoogleAds</a></li>
-                        <li><a href="./service.html">Social Media Marketing</a></li>
-                        <li><a href="./service.html">Lead Generation</a></li>
-                        <li><a href="./service.html">Graphic Design</a></li>
-                        <li><a href="./service.html">SEO</a></li>
-                        <li><a href="./service.html">Web Design & Development</a></li>
+                <a style="font-size: 1.3rem;" href="./index.html">Home</a>
+                <span class="dropdownCon"
+                    style="font-weight: 500; position: relative;font-size: 1.3rem; cursor: pointer;">Services
+                    <ul style="position: absolute;  flex-direction: column; gap: 20px;" class="dropdown">
+                        <li><a href="./service.html"
+                                style="font-size: 1.1rem;font-weight: 500; text-decoration: none; color: #000;">Google
+                                Ads</a>
+                        </li>
+                        <li><a href=""
+                                style="font-size: 1.1rem;font-weight: 500; text-decoration: none; color: #000;">Social
+                                Media Marketing</a>
+                        </li>
+                        <li><a href=""
+                                style="font-size: 1.1rem;font-weight: 500; text-decoration: none; color: #000;">Lead
+                                Generation</a>
+                        </li>
+                        <li><a href=""
+                                style="font-size: 1.1rem;font-weight: 500; text-decoration: none; color: #000;">Graphic
+                                Design</a>
+                        </li>
+                        <li><a href=""
+                                style="font-size: 1.1rem;font-weight: 500; text-decoration: none; color: #000;">SEO</a>
+                        </li>
+                        <li><a href=""
+                                style="font-size: 1.1rem;font-weight: 500; text-decoration: none; color: #000;">Web
+                                Design & Development</a>
+                        </li>
                     </ul>
                 </span>
-                <a href="./blogs.html">Blogs</a>
-                <a href="./about.html">About Us</a>
-                <a href="./contact.html">Contact Us</a>
+                <a style="font-size: 1.3rem;" href="./blogs.html">Blogs</a>
+                <a style="font-size: 1.3rem;" href="./about.html">About Us</a>
+                <a style="font-size: 1.3rem;" href="./contact.html">Contact Us</a>
+
+
+                <style>
+                    .dropdown {
+                        background-color: white;
+                        display: none;
+                        padding: 20px 0px;
+                        z-index: 9999;
+                        overflow: hidden;
+                        width: max-content;
+                    }
+
+                    .dropdownCon:hover .dropdown {
+                        display: flex;
+                    }
+
+                    .dropdown>li>a {
+                        padding: 5px 10px;
+                        border-radius: 4px;
+                        transition: all .1s;
+                    }
+
+                    .center>a:hover,
+                    .center>span:hover {
+                        color: #ed6744;
+                    }
+
+                    .dropdown>li>a:hover {
+                        background-color: rgb(211, 211, 211);
+
+                    }
+                </style>
             </div>
             <div class="rightCover">
-                <a href="./contact.html" class="right">
+                <a href="#Contact"
+                    style="background-color: #ed6744;text-decoration: none; padding: 20px 50px !important;font-size: 1.5rem; "
+                    class="right btnHover">
                     Let's Talk
                 </a>
                 <div class="sideBar" onclick="toggleSidBar()">
                     <ion-icon name="menu" style="font-size: 2.5rem;"></ion-icon>
                 </div>
-                <script>
-                    const toggleSidBar = () => {
-                        const sidebar = document.querySelectorAll('.center');
-                        const style = window.getComputedStyle(sidebar[0])
-                        const top = new WebKitCSSMatrix(style.transform).m41;
-                        if (top > 0) {
-                            sidebar[0].style.transform = "translateX(0%)"
-                        }
-                        else {
-
-                            sidebar[0].style.transform = "translateX(100%)"
-                        }
-                    }
-                    const items = document.querySelectorAll('.accordion button');
-
-                    function toggleAccordion() {
-                        const itemToggle = this.getAttribute('aria-expanded');
-
-                        for (i = 0; i < items.length; i++) {
-                            items[i].setAttribute('aria-expanded', 'false');
-                        }
-
-                        if (itemToggle == 'false') {
-                            this.setAttribute('aria-expanded', 'true');
-                        }
-                    }
-
-                    items.forEach((item) => item.addEventListener('click', toggleAccordion));
-                </script>
             </div>
 
         </div>
     </nav>
+        <script>
+            const toggleSidBar = () => {
+            const sidebar = document.querySelectorAll('.center');
+            const style = window.getComputedStyle(sidebar[0])
+            const top = new WebKitCSSMatrix(style.transform).m41;
+            if (top > 0) {
+                sidebar[0].style.transform = "translateX(0%)"
+            }
+            else {
 
-    <!-- hero section  -->
-    <section class="wrapper heroSection">
-        <video loop autoplay muted preload="auto" src="./video.mp4"></video>
-        <div class="filer"></div>
-        <div class="container">
+                sidebar[0].style.transform = "translateX(100%)"
+            }
+        }
+        </script>
+    <section class="wrapper heroSection"
+        style="height: 100vh; display: flex; position: relative; background-color: #000; overflow: hidden;">
+        <video loop autoplay muted preload="auto"
+            style="height: 100%; width: 100%; position: absolute; top: 0px; right: -100px; object-fit: cover;"
+            src="./video.mp4"></video>
+        <div
+            style="height: 100vh;max-width: none; width: 100vw; position: absolute; top: 0; left: 0; background: rgba(0, 0, 0, 0.4); ">
+
+        </div>
+        <div style="position: relative; z-index: 3;">
             <div class="left">
-                <h1>Leading AI-Powered Digital Marketing Agency</h1>
-                <h2 class="heroHeading sectionTopHeading" style=" color: #ed6744; height: 40px; margin: 10px 0px;">
-                    <span></span>
+                <h2 style="font-size: 1.6rem; color: white; border-left: 1px solid #ed6744;padding-left: 10px;">Leading
+                    AI-Powered Digital Marketing Agency</h2>
+                <h2 class="a" style=" color: #ed6744; height: 40px;"><span></span>
                 </h2>
-                <p class="subText">Boost your online presence with our
-                    cutting-edge solutions. We offer AI-driven SEO, targeted PPC, strategic social media management,
-                    data-fueled content creation, in-depth analytics, and smart automation tools at a fair rate</p>
+                <p class="subText" style=" color: white; font-size: 1.4rem;">Boost
+                    your online presence with
+                    our cutting-edge solutions. We offer AI-driven SEO, targeted PPC, strategic social media management,
+                    data-fueled content creation, in-depth analytics, and smart automation tools at a fair rate
+                </p>
                 <br>
-                <button class="btn"><a href="">Book a free consultation call</a> </button>
+
+                <button class="c1 btnHover"
+                    style="background-color: #ed6744; padding: 25px 50px !important;font-size: 1.5rem; margin-top: 20px;">Book
+                    a free
+                    consultation call</button>
+            </div>
+            <div class="right">
+                <!-- <form action="">
+                    <div class="inputBox">
+                        <label for="">Name</label>
+                        <input type="text" placeholder="Ex:Ethan Parker">
+                    </div>
+                    <div class="inputBox">
+                        <label for="">Email</label>
+                        <input type="text" placeholder="Ex:yourmail@gmail.com">
+                    </div>
+                    <div class="inputBox">
+                        <label for="">Phone</label>
+                        <input type="text" placeholder="Ex:+1 6523-2346-34">
+                    </div>
+                    <button style="background-color: #ed6744; padding: 10px 20px;"></button>
+                </form> -->
             </div>
         </div>
-        <script src="https://unpkg.com/ityped@0.0.10"></script>
-        <script>
-            window.ityped.init(document.querySelector('.heroHeading'), {
-                strings: ['Expert SEO Solutions.', 'Effective PPC Management.', "Innovative Web Development.", "Strategic Social Media Marketing.", "AI-Powered Marketing Strategies."],
-                loop: true
-            })
-        </script>
     </section>
-
-    <!-- services section  -->
-    <section class="wrapper services" id="Services">
-        <div >
-            <p class="sectionTopText" data-aos="fade-up">How We Serve</p>
-            <h2 class="sectionTopHeading" data-aos="fade-up">
+    <script src="https://unpkg.com/ityped@0.0.10"></script>
+    <script>
+        window.ityped.init(document.querySelector('.a'), {
+            strings: ['Expert SEO Solutions.', 'Effective PPC Management.', "Innovative Web Development.", "Strategic Social Media Marketing.", "AI-Powered Marketing Strategies."],
+            loop: true
+        })
+    </script>
+    <!-- <section class="wrapper heroSection">
+        <div class="heroSection2">
+            <h3>Trusted By global <br>
+                companies
+            </h3>
+            <div class="companyBox" style="display: flex; gap: 20px;">
+                <div class="company">
+                    <img src="https://duet-cdn.vox-cdn.com/thumbor/0x0:2012x1341/640x427/filters:focal(1006x670:1007x671):format(webp)/cdn.vox-cdn.com/uploads/chorus_asset/file/15483559/google2.0.0.1441125613.jpg"
+                        alt="">
+                </div>
+                <div class="company">
+                    <img src="https://cdn.logojoy.com/wp-content/uploads/20230921104947/Facebook-logo-1.png" alt="">
+                </div>
+                <div class="company">
+                    <img src="https://duet-cdn.vox-cdn.com/thumbor/0x0:2012x1341/640x427/filters:focal(1006x670:1007x671):format(webp)/cdn.vox-cdn.com/uploads/chorus_asset/file/15483559/google2.0.0.1441125613.jpg"
+                        alt="">
+                </div>
+                <div class="company">
+                    <img src="https://duet-cdn.vox-cdn.com/thumbor/0x0:2012x1341/640x427/filters:focal(1006x670:1007x671):format(webp)/cdn.vox-cdn.com/uploads/chorus_asset/file/15483559/google2.0.0.1441125613.jpg"
+                        alt="">
+                </div>
+                <div class="company">
+                    <img src="https://duet-cdn.vox-cdn.com/thumbor/0x0:2012x1341/640x427/filters:focal(1006x670:1007x671):format(webp)/cdn.vox-cdn.com/uploads/chorus_asset/file/15483559/google2.0.0.1441125613.jpg"
+                        alt="">
+                </div>
+                <div class="company">
+                    <img src="https://duet-cdn.vox-cdn.com/thumbor/0x0:2012x1341/640x427/filters:focal(1006x670:1007x671):format(webp)/cdn.vox-cdn.com/uploads/chorus_asset/file/15483559/google2.0.0.1441125613.jpg"
+                        alt="">
+                </div>
+            </div>
+        </div>
+    </section> -->
+    <section class="wrapper services" style="padding: 50px 0px; height: 100vh;" id="Services">
+        <div style=" flex-direction: column;align-items: center; display: flex; width: 95%;">
+            <p class="b" style="text-align: center; font-weight: 600; font-size: 1.2rem;" data-aos="fade-up">How We
+                Serve</p>
+            <h2 data-aos="fade-up" style="text-transform: capitalize;padding-top: 5px;">
                 Expert Digital solution For business growth
             </h2>
-            <div class="containers">
+            <div style="display: flex;gap: 5%;flex-wrap: wrap; row-gap: 40px; margin-top: 30px;">
+
                 <div class="card">
                     <p class="hp">Google Ads</p>
                     <p>We provide Google ads services to grow you ads on search engine for more effective traffic and
@@ -128,36 +345,50 @@
                     <p class="hp">Social Media Marketing</p>
                     <p>We have a specialty of creating engaging content for any business in order to create audience
                         reputation and evergreen content.</p>
+
+
                 </div>
                 <div class="card">
                     <p class="hp">Lead Generation
                     </p>
                     <p>We are known for providing the quality leads to our clients that increase their sales
                         exponentially and skyrocket their business growth.</p>
+
+
                 </div>
                 <div class="card">
                     <p class="hp">Graphic Design
                     </p>
                     <p>We create unique and eye pleasing posters, banners, logos etc. that you can use to grab the
                         attention of your desired audience and improve your engagement rate.</p>
+
+
                 </div>
                 <div class="card">
                     <p class="hp">SEO</p>
                     <p>We have best in class SEO specialist with the deep knowledge of Onpage & off Page SEO to provide
                         your Website organic ranking with quality backlinks.</p>
+
+
                 </div>
+
                 <div class="card">
                     <p class="hp">Web Design & Development</p>
                     <p>Make your website aesthetically beautiful, superfast & responsive at the same time with all new
                         trending designs & features.</p>
+
+
                 </div>
+
+
             </div>
-            <button class="btn" style="margin-top: 100px;"><a href="">READY TO GET STARTED? LET'S CHAT</a> </button>
+            <button
+                style="background-color: #ed6744; padding: 25px 50px !important;font-size: 1.5rem; margin-top: 100px;">READY
+                TO GET STARTED?
+                LET'S CHAT</button>
+
         </div>
     </section>
-
-
-    <!-- about section -->
     <section class="wrapper about" id="About">
         <div>
             <div class="left">
@@ -165,9 +396,8 @@
                     alt="">
             </div>
             <div class="right">
-                <p class="sectionTopText" style="margin-bottom: -20px;" data-aos="fade-right">Why Us</p>
-                <h2 class="sectionTopHeading" style="max-width: 70%; margin: 0px;" data-aos="fade-right">Transforming
-                    digital marketing with us
+                <p class="b" style="margin-bottom: -20px;font-size: 1.2rem;" data-aos="fade-right">Why Us</p>
+                <h2 style="max-width: 70%; margin: 0px;" data-aos="fade-right">Transforming digital marketing with us
                 </h2>
                 <div class="progeressBar">
                     <label for="">Expert SEO Solutions</label>
@@ -197,17 +427,38 @@
             </div>
         </div>
     </section>
+
     <script>
+        // Get all elements with the class fullBar
+
         const fullBarElements = document.querySelectorAll('.fullBar');
         let styleContent = '';
+
+        // Loop through each element and create the dynamic CSS
         fullBarElements.forEach((element, index) => {
             const parentValue = element.getAttribute('parent');
+            // gsap.to(element, {
+            //     width: `${parentValue}%`,
+            //     duration: 2, // Animation duration
+            //     ease: "power2.out", // Easing function
+            //     scrollTrigger: {
+            //         trigger: element,
+            //         start: "top 50%", // Trigger the animation when the element is at 50% of the viewport
+            //         // Play the animation on scroll
+            //     }
+            // });
+
+
+
+
             styleContent += `
                 .progeressBar:nth-of-type(${index + 1}) .fullBar::after {
                     width: ${parentValue}%;
                 }
             `;
         });
+
+        // Create a style element and append the dynamic styles to it
         const styleElement = document.createElement('style');
         styleElement.textContent = styleContent;
         document.head.appendChild(styleElement);
@@ -278,17 +529,25 @@
 
             </div> -->
         </div>
-        <button class="btn" style="width: fit-content; margin-left:auto; margin-right:auto;"><a href="">WORK WITH
-                US!</a> </button>
+        <button
+            style="background-color: #ed6744;width: fit-content; margin: auto;  padding: 25px 50px !important;font-size: 1.5rem; margin-top: 50px;">WORK
+            WITH
+            US!</button>
 
     </section>
+
+
+
+
+
+
+
     <section class="wrapper services" style="padding: 50px 0px; background-color: rgb(253 255 244);" id="Blog">
         <div style="display:flex; flex-direction: column;align-items: center; width: 95%;">
-            <p class="sectionTopText" style="text-align: center;" data-aos="fade-up">Resources</p>
-            <h2 class="sectionTopHeading" data-aos="fade-up">
+            <p class="b" style="text-align: center; font-weight: 600;" data-aos="fade-up">Resources</p>
+            <h2 data-aos="fade-up">
                 The Blog
             </h2>
-            <br>
             <div class="swiper">
                 <div class="swiper-wrapper">
                     <div class="swiper-slide">
@@ -389,10 +648,20 @@
                 <div class="swiper-button-prev"></div>
                 <div class="swiper-button-next"></div>
             </div>
-            <button class="btn" style="width: fit-content; margin-left:auto; margin-right:auto;"><a
-                    href="./blogs.html">View all</a> </button>
+            <button
+                style="background-color: #ed6744;width: fit-content; margin: auto;  padding: 25px 50px !important;font-size: 1.5rem !important; margin-top: 50px;"><a
+                    href="./blogs.html" style="font-size: 1.5rem !important; color: white; text-decoration: none;">View
+                    all</a> </button>
+
+
         </div>
     </section>
+
+
+
+
+
+
     <style>
         .swiper-pagination {
             top: 20px !important;
@@ -469,10 +738,19 @@
             color: white;
         }
     </style>
+
+
+
+
+
+
+
+
+
     <section class="wrapper chooseUs" style="padding: 50px 0px;" id="Contact">
         <div style=" flex-direction: column;align-items: center; width: 95%;">
-            <div class="topText sectionTopText" data-aos="fade-right">How We Work</div>
-            <h2 class="sectionTopHeading" style="margin-top: 10px;" data-aos="fade-right">
+            <div class="topText b" data-aos="fade-right">How We Work</div>
+            <h2 style="margin-top: 10px;" data-aos="fade-right">
                 Revolutionizing Digital
                 Marketing with AI
             </h2>
@@ -520,7 +798,7 @@
                     </div>
 
                 </div>
-                <form id="consultationForm" class="left form"
+                <form method="POST" class="left form"
                     style="background-color: #ff8567;  display: flex;flex-direction: column;gap: 10px; border-radius: 30px; padding: 30px;height: 730px;">
                     <div class="title" style="color: #000; font-weight: 700;">Let's work together </div>
                     <p style="font-style:italic; text-align: center;margin: 0px 0px 10p 0px;">Book your FREE strategic
@@ -535,19 +813,26 @@
                         <input type="text" name="email" id="email"
                             style="border: 1px solid rgb(0, 0, 0);outline: none;background-color: transparent;font-size: 1.2rem; padding: 7px 10px; border-radius: 4px;">
                     </div>
+                    <!-- <div style="display: flex; flex-direction: column;gap: 10px;">
+                        <label for="email" style="color: rgb(0, 0, 0); font-size: 1.2rem;">Phone *</label>
+                        <input type="text" id="email"
+                            style="border: 1px solid rgb(0, 0, 0);outline: none;background-color: transparent;color: rgb(0, 0, 0);font-size: 1.2rem; padding: 7px 10px; border-radius: 4px;">
+                    </div> -->
                     <div style="display: flex; flex-direction: column;gap: 10px;">
-                        <label for="companyName" style="color: rgb(0, 0, 0); font-size: 1.2rem;">Company Name</label>
+                        <label for="companyName" style="color: rgb(0, 0, 0); font-size: 1.2rem;">Company Name </label>
                         <input type="text" name="companyName" id="companyName"
                             style="border: 1px solid rgb(0, 0, 0);outline: none;background-color: transparent;color: rgb(0, 0, 0);font-size: 1.2rem; padding: 7px 10px; border-radius: 4px;">
                     </div>
                     <div style="display: flex; flex-direction: column;gap: 10px;">
-                        <label for="companyUrl" style="color: rgb(0, 0, 0); font-size: 1.2rem;">Company URL</label>
+                        <label for="companyUrl" style="color: rgb(0, 0, 0); font-size: 1.2rem;">Company URL </label>
                         <input type="text" id="companyUrl" name="companyUrl"
                             style="border: 1px solid rgb(0, 0, 0);outline: none;background-color: transparent;color: rgb(0, 0, 0);font-size: 1.2rem; padding: 7px 10px; border-radius: 4px;">
                     </div>
                     <div style="display: flex; flex-direction: column;gap: 10px;">
-                        <label for="budget" style="color: rgb(0, 0, 0); font-size: 1.2rem;">How much do you plan to
-                            spend all-in on marketing per month?</label>
+                        <label for="email" style="color: rgb(0, 0, 0); font-size: 1.2rem;">How much do you plan to spend
+                            all-in on marketing per month?
+
+                        </label>
                         <select name="budget" id="budget"
                             style="border: 1px solid rgb(0, 0, 0);font-weight: 700; outline: none;background-color: transparent;color: rgb(0, 0, 0);font-size: 1.2rem; padding: 7px 10px; border-radius: 4px;">
                             <option style="background-color: #ff8567;" value="Im in Start-Up Mode">"I'm in Start-Up
@@ -557,40 +842,12 @@
                             <option style="background-color: #ff8567;" value="300">300</option>
                         </select>
                     </div>
-                    <input class="h3 blackBut"
-                        type="submit" value="Submit" />
-                </form>
-                
-                <script>
-                    document.getElementById('consultationForm').addEventListener('submit', function (event) {
-                        event.preventDefault(); // Prevent form from submitting the default way
+                    <!-- <button  class="h3" style="background-color: #000; color: #ffffff;margin: 15px 0px;">submit</button> -->
+                    <input class="h3 "
+                        style="background-color: #000; color: #ffffff !important; padding: 25px 50px !important;margin: 15px 0px;"
+                        type="submit" name="login" value="Submit" />
 
-                        // Get the form data
-                        const formData = {
-                            name: document.getElementById('name1').value,
-                            email: document.getElementById('email').value,
-                            companyName: document.getElementById('companyName').value,
-                            companyUrl: document.getElementById('companyUrl').value,
-                            budget: document.getElementById('budget').value
-                        };
-                        fetch('http://65.1.93.85/api/v1/lead', { // Replace with your API endpoint
-                            method: 'POST',
-                            headers: {
-                                'Content-Type': 'application/json'
-                            },
-                            body: JSON.stringify(formData)
-                        })
-                            .then(response => response.json())
-                            .then(data => {
-                                console.log('Success:', data); // Handle the response data as needed
-                                alert('Form submitted successfully!');
-                            })
-                            .catch((error) => {
-                                console.error('Error:', error);
-                                alert('There was an error submitting the form.');
-                            });
-                    });
-                </script>
+                </form>
 
 
             </div>
@@ -599,11 +856,10 @@
     </section>
     <section class="wrapper testimonial" style="padding: 50px 0px;">
         <div style=" flex-direction: column;align-items: center; width: 95%;">
-            <div class="sectionTopText" data-aos="fade-right">Reviews</div>
-            <h2 class="sectionTopHeading" style="margin-top: 10px;" data-aos="fade-right">
+            <div class="topText b" data-aos="fade-right">Reviews</div>
+            <h2 style="margin-top: 10px;" data-aos="fade-right">
                 Our Client Partners Speak For Themselves
             </h2>
-            <br>
             <div class="swiper">
                 <div class="swiper-wrapper">
 
@@ -790,14 +1046,16 @@
     </script>
     <section class="wrapper specializes2" style="padding: 80px 0px; border-top:1px solid white">
         <div style=" flex-direction: column;align-items: center; width: 95%; gap: 10px;">
-            <p class="sectionTopText" data-aos="fade-right">Let's get started</p>
-            <h2 class="sectionTopHeading" style="line-height: 30px; text-align: center;" data-aos="fade-right">
+            <p class="topText b" data-aos="fade-right">Let's get started</p>
+            <h2 class="hasdf" style="line-height: 30px; text-align: center;" data-aos="fade-right">
                 Don't wait, let's get started today!
             </h2>
-            <br>
             <p style="text-align: center;">Get ahead of the competition and start diriving measurable results for your
                 business today.</p>
-            <button class="btn"><a href="">Wanna get in touch? Let’s talk</a> </button>
+            <button
+                style="background-color: #ed6744;width: fit-content; margin: auto;  padding: 25px 50px !important;font-size: 1.5rem !important; margin-top: 50px;">Wanna
+                get in touch? Let’s
+                talk</button>
 
         </div>
     </section>
@@ -809,7 +1067,8 @@
         crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <section class="wrapper faq" style="padding: 50px 0px;">
         <div style=" flex-direction: column;align-items: center; width: 95%;">
-            <h2 class="sectionTopHeading" style="text-align: center;">
+            <div class="topText"></div>
+            <h2 style="margin-top: 10px; text-align: center; width: 100%;">
                 Frequently Asked Questions
             </h2>
 
@@ -907,7 +1166,8 @@
 
         </div>
     </section>
-    <footer class="wrapper" style="margin-top: 50px;">
+
+    <footer class="wrapper" style="">
         <div
             style="max-width: 1300px; position: relative; align-items: center; width: 95%; gap: 10px;padding: 50px 0px; display: flex;justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 20px;">
             <div>
@@ -936,7 +1196,8 @@
                 </div>
             </div>
             <div class="a" style="display: flex;flex-direction: column;gap: 10px;color: white !important;">
-                <a href="blogs.html">Blogs</a>
+                <!-- <div class="left">Usefull Link</div> -->
+               <a href="blogs.html">Blogs</a>
                 <a href="index.html#Services">Services</a>
                 <a href="about.html">About Us</a>
                 <a href="contact.html">Contact Us</a>
@@ -944,8 +1205,7 @@
                 <a href="terms&condition.html">Terms & Conditions</a>
             </div>
             <div class="a" style="display: flex;flex-direction: column;gap: 10px;color: white !important;">
-                <div class="left" style="margin-bottom: 10px; color: #ed6744; font-weight: 700;
-            font-size: 1.5rem;">Need support ?</div>
+                <div class="left" style="margin-bottom: 10px; color: #ed6744;">Need support ?</div>
                 <a class="ad" href=""><ion-icon name="mail-outline"></ion-icon>info@digihalt.com</a>
                 <a class="ad" href=""><ion-icon name="call-outline"></ion-icon>+91-8755220228</a>
             </div>
@@ -958,30 +1218,8 @@
     <div style="" class="top" id="scrollToTop">
         <ion-icon name="arrow-up-outline" style="font-size: 2rem; color: white;"></ion-icon>
     </div>
-    <script>
-        const scrollToTopButton = document.getElementById('scrollToTop');
-        window.addEventListener('scroll', () => {
-            if (window.scrollY > 100) {
-                scrollToTopButton.style.display = 'flex';
-            } else {
-                scrollToTopButton.style.display = 'none';
-            }
-        });
-
-        // Add a click event listener to the top div
-        scrollToTopButton.addEventListener('click', () => {
-            // Scroll to the top of the page smoothly
-            window.scrollTo({
-                top: 0,
-                behavior: 'smooth'
-            });
-        });
-    </script>
-
-    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
-    <script>
-        AOS.init();
-    </script>
+  
 </body>
 
 </html>
+
